@@ -82,6 +82,18 @@ class SudokuGame {
         this.useMultithreading = useMultithreading;
     }
 
+    public SudokuGame(char[][] board)
+    {
+        this.leetcodeJudging = true;
+        this.useMultithreading = false;
+        this.board = board;
+    }
+
+    public void solveSudoku() {
+        this.solveSudoku(this.board);
+    }
+
+
     public void solveSudoku(char[][] board)
     {
         this.board = board;
