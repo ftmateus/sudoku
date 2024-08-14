@@ -15,7 +15,6 @@ public class Sudoku {
 
     public static final int GAMES_PER_THREAD = 8;
     public static void main(String[] args) throws IOException, InterruptedException {
-
         InputStream input = System.in;
         // ExecutorService executor = Executors.newWorkStealingPool(4);
         ExecutorService executor = Executors.newWorkStealingPool();
@@ -45,7 +44,7 @@ public class Sudoku {
                 }
 
                 if(workerGames.isEmpty())
-                    break;
+                    continue;
 
                 executor.execute(() -> {
                     for(var game : workerGames) {
@@ -59,13 +58,13 @@ public class Sudoku {
 
         executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
 
-        // for(var r : results) {
-        //     System.out.println();
+        for(var r : results) {
+            System.out.println();
 
-        //     r.printBoardSimple();
+            r.printBoardSimple();
             
-        //     System.out.println("#####################");
-        // }
+            System.out.println("#####################");
+        }
     }
 
     public static List<char[][]> parseSudokuFile(InputStream in) throws IOException
